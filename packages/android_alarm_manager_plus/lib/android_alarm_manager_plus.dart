@@ -321,4 +321,15 @@ class AndroidAlarmManager {
     final r = await _channel.invokeMethod<bool>('Alarm.cancel', <dynamic>[id]);
     return (r == null) ? false : r;
   }
+
+  /// Helper function to determine background process is still running.
+  ///
+  ///
+  /// Returns a [Future] that resolves to `true` if background process is still
+  /// running and `false` if the process no longer exists.
+  static Future<bool> isRunning(int id) async {
+    final r =
+        await _channel.invokeMethod<bool>('Alarm.isRunning', <dynamic>[id]);
+    return (r == null) ? false : r;
+  }
 }

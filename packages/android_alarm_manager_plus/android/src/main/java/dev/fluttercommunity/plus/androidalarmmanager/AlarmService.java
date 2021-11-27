@@ -389,4 +389,14 @@ public class AlarmService extends JobIntentService {
       Log.i(TAG, "Exception waiting to execute Dart callback", ex);
     }
   }
+
+  // Helper function to determine background service is running.
+  public static boolean isRunning(Context context, int requestCode) {
+        return (PendingIntent.getBroadcast(
+                context,
+                requestCode,
+                alarm,
+                (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M ? PendingIntent.FLAG_IMMUTABLE : 0)
+                    | PendingIntent.FLAG_NO_CREATE) != null);
+  }
 }

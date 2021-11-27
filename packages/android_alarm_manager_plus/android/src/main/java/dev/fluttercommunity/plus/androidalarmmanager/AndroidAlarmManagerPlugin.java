@@ -127,6 +127,10 @@ public class AndroidAlarmManagerPlugin implements FlutterPlugin, MethodCallHandl
           AlarmService.cancel(context, requestCode);
           result.success(true);
           break;
+        case "Alarm.isRunning":
+        int runningcode = ((JSONArray) arguments).getInt(0);
+          result.success(AlarmService.isRunning(context, runningcode));
+          break;
         default:
           result.notImplemented();
           break;
