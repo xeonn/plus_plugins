@@ -392,6 +392,7 @@ public class AlarmService extends JobIntentService {
 
   // Helper function to determine background service is running.
   public static boolean isRunning(Context context, int requestCode) {
+    Intent alarm = new Intent(context, AlarmBroadcastReceiver.class);
         return (PendingIntent.getBroadcast(
                 context,
                 requestCode,
